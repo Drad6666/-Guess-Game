@@ -1,0 +1,35 @@
+
+1<script>
+const randomNumber = Math.round(Math.random() * 50);
+let userNumber;
+let difference;
+let prevDifference = randomNumber;
+let countOfAttempt = prompt("Enter the number of attempts",""); // установить дефолтное значение если юзер не выбрал число попыток
+countOfAttempt = +countOfAttempt; // использовать другой метод для приведения к числу Number, parseInt
+let i;
+
+for (i = 0; i <= countOfAttempt; i++) {
+  if (i === countOfAttempt) {
+    console.log(`The game is over, fool! The number of attempts used = ${countOfAttempt} !`);
+    break;
+  }
+
+  userNumber = prompt("I guessed the number,Guess user - max number is 50 !","");
+  userNumber = +userNumber; // использовать другой метод для приведения к числу Number, parseInt
+
+  while (userNumber > 50) {
+    userNumber = prompt("I guessed the number,Guess user - max number is 50 !","");
+  }
+
+  difference = Math.abs(randomNumber - userNumber);
+  if (userNumber === randomNumber) {
+    console.log(`You are clever,guessed from ${i + 1} attempts !`);
+    break;
+  } else if (difference > prevDifference) {
+    console.log("Colder");
+  } else if (difference < prevDifference) {
+    console.log("Warmer");
+  }
+  prevDifference = difference;
+}
+</script>
